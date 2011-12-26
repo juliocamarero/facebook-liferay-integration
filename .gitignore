@@ -11,3 +11,4 @@ _sass_cache_*.css
 
 /build.*.properties
 /dist
+*.iml
