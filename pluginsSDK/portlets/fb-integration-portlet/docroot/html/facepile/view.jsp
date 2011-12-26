@@ -21,7 +21,7 @@
 </div>
 
 <c:choose>
-	<c:when test="<%= useFBSDK %>">
+	<c:when test="<%= useFbSdk %>">
 		<liferay-util:html-top>
 			<script src="http://connect.facebook.net/<%= themeDisplay.getLanguageId()  %>/all.js#xfbml=1" type="text/javascript"></script>
 		</liferay-util:html-top>

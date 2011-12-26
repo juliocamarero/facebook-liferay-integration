@@ -12,13 +12,18 @@
 		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>view-jsp</name>
-			<value>//html/activity/view.jsp</value>
+			<value>/html/activity/view.jsp</value>
+		</init-param>
+		<init-param>
+			<name>config-jsp</name>
+			<value>/html/activity/configuration.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>VIEW</portlet-mode>
 		</supports>
+		<resource-bundle>content/Language</resource-bundle>
 		<portlet-info>
 			<title>Activity</title>
 			<short-title>Activity</short-title>
@@ -43,13 +48,18 @@
 		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>view-jsp</name>
-			<value>//html/like_button/view.jsp</value>
+			<value>/html/like_button/view.jsp</value>
+		</init-param>
+		<init-param>
+			<name>config-jsp</name>
+			<value>/html/like_button/configuration.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>VIEW</portlet-mode>
 		</supports>
+		<resource-bundle>content/Language</resource-bundle>
 		<portlet-info>
 			<title>Like Button</title>
 			<short-title>Like Button</short-title>
@@ -74,13 +84,18 @@
 		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>view-jsp</name>
-			<value>//html/like_box/view.jsp</value>
+			<value>/html/like_box/view.jsp</value>
+		</init-param>
+		<init-param>
+			<name>config-jsp</name>
+			<value>/html/like_box/configuration.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>VIEW</portlet-mode>
 		</supports>
+		<resource-bundle>content/Language</resource-bundle>
 		<portlet-info>
 			<title>Like Box</title>
 			<short-title>Like Box</short-title>
@@ -105,13 +120,18 @@
 		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>view-jsp</name>
-			<value>//html/comments/view.jsp</value>
+			<value>/html/comments/view.jsp</value>
+		</init-param>
+		<init-param>
+			<name>config-jsp</name>
+			<value>/html/comments/configuration.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>VIEW</portlet-mode>
 		</supports>
+		<resource-bundle>content/Language</resource-bundle>
 		<portlet-info>
 			<title>Comments</title>
 			<short-title>Comments</short-title>
@@ -136,13 +156,18 @@
 		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
 		<init-param>
 			<name>view-jsp</name>
-			<value>//html/facepile/view.jsp</value>
+			<value>/html/facepile/view.jsp</value>
+		</init-param>
+		<init-param>
+			<name>config-jsp</name>
+			<value>/html/facepile/configuration.jsp</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>
 			<mime-type>text/html</mime-type>
 			<portlet-mode>VIEW</portlet-mode>
 		</supports>
+		<resource-bundle>content/Language</resource-bundle>
 		<portlet-info>
 			<title>Face Pile</title>
 			<short-title>Face Pile</short-title>

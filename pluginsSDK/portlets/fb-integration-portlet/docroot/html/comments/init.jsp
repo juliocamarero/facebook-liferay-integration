@@ -18,6 +18,6 @@
 
 <%
 String href = preferences.getValue("href", "");
-String numPosts = preferences.getValue("num-posts", "10");
+String numPosts = preferences.getValue("numPosts", "10");
 String width = preferences.getValue("width", "550");
 %>

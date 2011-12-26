@@ -20,22 +20,24 @@
 <liferay-portlet:actionURL portletConfiguration="true" var="configurationActionURL" />
 
 <aui:form action="<%= configurationActionURL %>" method="post" name="fm">
+	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
+
 	<aui:fieldset>
-		<aui:input label="use-facebook-sdk" name="isFBSDK" type="checkbox" value="<%= useFBSDK %>"/>
+		<aui:input label="use-fb-sdk" name="preferences--useFbSdk--" type="checkbox" value="<%= useFbSdk %>"/>
 	
-		<aui:input label="page-url" name="href" type="text" value="<%= href %>" />
+		<aui:input label="page-url" name="preferences--href--" type="text" value="<%= href %>" />
 		
-		<aui:input name="connections" type="text" value="<%= connections %>" />
+		<aui:input name="preferences--connections--" type="text" value="<%= connections %>" />
 		
-		<aui:input name="showStream" type="checkbox" value="<%= showStream %>"/>
+		<aui:input name="preferences--showStream--" type="checkbox" value="<%= showStream %>"/>
 		
-		<aui:input name="showHeader" type="checkbox" value="<%= showHeader %>"/>
+		<aui:input name="preferences--showHeader--" type="checkbox" value="<%= showHeader %>"/>
 
-		<aui:input name="showFaces" type="checkbox" value="<%= showFaces %>"/>
+		<aui:input name="preferences--showFaces--" type="checkbox" value="<%= showFaces %>"/>
 
-		<aui:input name="width" type="text" value="<%= width %>" />
+		<aui:input name="preferences--width--" type="text" value="<%= width %>" />
 		
-		<aui:input name="height" type="text" value="<%= height %>" />
+		<aui:input name="preferences--height--" type="text" value="<%= height %>" />
 	</aui:fieldset>
 	
 	<aui:button-row>

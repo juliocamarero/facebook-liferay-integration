@@ -18,12 +18,12 @@
 
 <%
 String site = preferences.getValue("site", StringPool.BLANK);
-String layoutStyle = preferences.getValue("layout-style", StringPool.BLANK);
-String borderColor = preferences.getValue("border-color", StringPool.BLANK);
-String colorsScheme = preferences.getValue("colors-scheme", StringPool.BLANK);
+String layoutStyle = preferences.getValue("layoutStyle", StringPool.BLANK);
+String borderColor = preferences.getValue("borderColor", StringPool.BLANK);
+String colorsScheme = preferences.getValue("colorsScheme", StringPool.BLANK);
 String font = preferences.getValue("font", StringPool.BLANK);
-boolean showHeader = GetterUtil.getBoolean(preferences.getValue("show-header", Boolean.TRUE.toString()));
-boolean showRecommendations = GetterUtil.getBoolean(preferences.getValue("show-recommendations", Boolean.TRUE.toString()));
+boolean showHeader = GetterUtil.getBoolean(preferences.getValue("showHeader", Boolean.TRUE.toString()));
+boolean showRecommendations = GetterUtil.getBoolean(preferences.getValue("showRecommendations", Boolean.TRUE.toString()));
 String width = preferences.getValue("width", "300");
 String height = preferences.getValue("height", "300");
 %>

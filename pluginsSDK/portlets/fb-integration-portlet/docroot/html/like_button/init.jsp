@@ -17,12 +17,12 @@
 <%@ include file="../init.jsp" %>
 
 <%
-String urlToLike = preferences.getValue("url-to-like", StringPool.BLANK);
-String layoutStyle = preferences.getValue("layout-style", StringPool.BLANK);
-String verbToDisplay = preferences.getValue("verb-to-display", StringPool.BLANK);
-String colorsScheme = preferences.getValue("colors-scheme", StringPool.BLANK);
+String urlToLike = preferences.getValue("urlToLike", StringPool.BLANK);
+String layoutStyle = preferences.getValue("layoutStyle", StringPool.BLANK);
+String verbToDisplay = preferences.getValue("verbToDisplay", StringPool.BLANK);
+String colorsScheme = preferences.getValue("colorsScheme", StringPool.BLANK);
 String font = preferences.getValue("font", StringPool.BLANK);
-boolean showFaces = GetterUtil.getBoolean(preferences.getValue("show-faces", Boolean.TRUE.toString()));
+boolean showFaces = GetterUtil.getBoolean(preferences.getValue("showFaces", Boolean.TRUE.toString()));
 String width = preferences.getValue("width", "300");
 String height = preferences.getValue("height", "300");
 %>

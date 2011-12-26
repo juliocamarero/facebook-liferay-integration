@@ -19,14 +19,16 @@
 <liferay-portlet:actionURL portletConfiguration="true" var="configurationActionURL" />
 
 <aui:form action="<%= configurationActionURL %>" method="post" name="fm">
+	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
+
 	<aui:fieldset>
-		<aui:input label="use-facebook-sdk" name="isFBSDK" type="checkbox" value="<%= useFBSDK %>"/>
+		<aui:input label="use-fb-sdk" name="preferences--useFbSdk--" type="checkbox" value="<%= useFbSdk %>"/>
 
-		<aui:input label="page-url" name="href" type="text" value="<%= href %>" />
+		<aui:input label="page-url" name="preferences--href--" type="text" value="<%= href %>" />
 
-		<aui:input name="maxRows" type="text" value="<%= maxRows %>" />
+		<aui:input name="preferences--maxRows--" type="text" value="<%= maxRows %>" />
 		
-		<aui:input name="width" type="text" value="<%= width %>" />
+		<aui:input name="preferences--width--" type="text" value="<%= width %>" />
 	</aui:fieldset>
 	
 	<aui:button-row>
