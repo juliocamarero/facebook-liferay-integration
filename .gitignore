@@ -10,5 +10,5 @@ _sass_cache_*.css
 /*/*/docroot/WEB-INF/classes
 
 */build.*.properties
-/dist
+pluginsSDK/dist
 *.iml
