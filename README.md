@@ -8,10 +8,13 @@ This project will benefit site administrators who maintain a website built in Li
 
 Initially, this project contains some plugins (portlets) for having the **facebook social apps** (comments, like boxes... etc)
 Some developments to come:
+
 * Integration of the openGraph protocol
 * Integration of facebook comments on top of liferay comments
 * Automatic integration of Sites with Facebook pages
 * ...
 * ?
+
+
 
 
