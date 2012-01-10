@@ -9,6 +9,6 @@ _sass_cache_*.css
 
 /*/*/docroot/WEB-INF/classes
 
-/build.*.properties
+*/build.*.properties
 /dist
 *.iml
