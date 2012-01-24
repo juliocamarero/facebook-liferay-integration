@@ -18,6 +18,6 @@ Some developments to come:
 
 Below there are some screenshots of the current portlets that are available:
 
-<img alt="Facebook Comments in a Liferay portlet" href="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/comments.png" />
+<img alt="Facebook Comments in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/comments.png" />
 
 
