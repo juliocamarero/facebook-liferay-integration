@@ -19,7 +19,7 @@
 <div style="text-align:center">
 	<c:choose>
 		<c:when test="<%= useFbSdk %>">
-			<liferay-util:html-top>
+			<liferay-util:html-top outputKey="fb">
 				<script src="http://connect.facebook.net/<%= themeDisplay.getLanguageId()  %>/all.js#xfbml=1" type="text/javascript"></script>
 			</liferay-util:html-top>
 

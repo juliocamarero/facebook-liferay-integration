@@ -17,6 +17,10 @@
 <%@ include file="init.jsp" %>
 
 <div style="text-align:center">
+	<liferay-util:html-top outputKey="fb">
+		<script src="http://connect.facebook.net/<%= themeDisplay.getLanguageId()  %>/all.js#xfbml=1" type="text/javascript"></script>
+	</liferay-util:html-top>
+
 	<fb:facepile max-rows="<%= maxRows %>" width="<%= width %>"></fb:facepile>
 </div>
 

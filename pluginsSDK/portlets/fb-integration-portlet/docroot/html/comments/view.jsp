@@ -16,7 +16,7 @@
 
 <%@ include file="init.jsp" %>
 
-<liferay-util:html-top>
+<liferay-util:html-top outputKey="fb">
 	<script src="http://connect.facebook.net/<%= themeDisplay.getLanguageId()  %>/all.js#xfbml=1" type="text/javascript"></script>
 </liferay-util:html-top>
 
