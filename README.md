@@ -18,6 +18,15 @@ Some developments to come:
 
 Below there are some screenshots of the current portlets that are available:
 
+<img alt="Facebook Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/portlets.png" />
+
+<img alt="Facebook Like Box in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/like-box.png" />
+
+<img alt="Facebook Like Button in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/like-button.png" />
+
 <img alt="Facebook Comments in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/comments.png" />
 
+<img alt="Facebook Face Pile in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/facepile.png" />
+
+<img alt="Facebook Recent Activity in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/recent-activity.png" />
 
