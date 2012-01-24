@@ -18,7 +18,7 @@ Some developments to come:
 
 Below there are some screenshots of the current portlets that are available:
 
-![Comments Social Plugin](/images/screenshots/comments.png)
+![Comments Social Plugin][https://github.com/juliocamarero/facebook-liferay-integration/blob/master/images/screenshots/comments.png]
 
 
 
