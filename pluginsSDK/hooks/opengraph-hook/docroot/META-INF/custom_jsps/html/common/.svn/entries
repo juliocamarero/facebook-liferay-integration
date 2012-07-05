@@ -1,0 +1,35 @@
+10
+
+dir
+0
+http://freezity.dyndns.org/svn/trunk/hooks/freezity-hook/docroot/META-INF/custom_jsps/html/common
+http://freezity.dyndns.org/svn
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a70496e2-04c8-46fc-a0f2-7df5b8c9c4e6
+
+themes
+dir
+
+
+
+add
+
