@@ -2,5 +2,23 @@
 <!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.1.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_1_0.dtd">
 
 <hook>
+	<portal-properties>portal.properties</portal-properties>
+
+	<language-properties>content/Language.properties</language-properties>
+	<language-properties>content/Language_en.properties</language-properties>
+	<language-properties>content/Language_es.properties</language-properties>
+
 	<custom-jsp-dir>/META-INF/custom_jsps</custom-jsp-dir>
+
+	<servlet-filter>
+		<servlet-filter-name>OpenGraph Filter</servlet-filter-name>
+		<servlet-filter-impl>com.fb.filter.OpenGraphFilter</servlet-filter-impl>
+	</servlet-filter>
+	<servlet-filter-mapping>
+		<servlet-filter-name>OpenGraph Filter</servlet-filter-name>
+		<before-filter>Valid Html Filter</before-filter>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</servlet-filter-mapping>
 </hook>
