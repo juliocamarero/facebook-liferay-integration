@@ -21,4 +21,9 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 	</servlet-filter-mapping>
+
+	<struts-action>
+		<struts-action-path>/portal/layout</struts-action-path>
+		<struts-action-impl>com.fb.action.OpenGraphLayoutAction</struts-action-impl>
+	</struts-action>
 </hook>
