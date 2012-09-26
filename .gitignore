@@ -14,3 +14,6 @@ pluginsSDK/dist
 */build.*.properties
 *.iml
 *.class
+
+Icon\r
+Icon
