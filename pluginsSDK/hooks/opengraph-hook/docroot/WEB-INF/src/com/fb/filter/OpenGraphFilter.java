@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.servlet.StringServletResponse;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.HttpUtil;
+import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -112,8 +113,21 @@ public class OpenGraphFilter extends BaseFilter {
 		StringServletResponse stringServerResponse = new StringServletResponse(
 			response);
 
-		processFilter(
-			OpenGraphFilter.class, request, stringServerResponse, filterChain);
+		// LPS-30162
+
+		Thread currentThread = Thread.currentThread();
+
+		ClassLoader contextClassLoader = currentThread.getContextClassLoader();
+		currentThread.setContextClassLoader(
+			PortalClassLoaderUtil.getClassLoader());
+
+		try {
+			processFilter(
+				OpenGraphFilter.class, request, stringServerResponse, filterChain);
+		}
+		finally {
+			currentThread.setContextClassLoader(contextClassLoader);
+		}
 
 		String contentType = response.getContentType();
 
