@@ -26,4 +26,8 @@
 		<struts-action-path>/portal/layout</struts-action-path>
 		<struts-action-impl>com.fb.action.OpenGraphLayoutAction</struts-action-impl>
 	</struts-action>
+	<struts-action>
+		<struts-action-path>/login/facebook_connect_oauth</struts-action-path>
+		<struts-action-impl>com.fb.action.FacebookConnectAction</struts-action-impl>
+	</struts-action>
 </hook>
