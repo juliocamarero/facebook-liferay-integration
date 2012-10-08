@@ -27,8 +27,6 @@
 	
 		<aui:input label="page-url" name="preferences--href--" type="text" value="<%= href %>" />
 		
-		<aui:input name="preferences--connections--" type="text" value="<%= connections %>" />
-		
 		<aui:input name="preferences--showStream--" type="checkbox" value="<%= showStream %>"/>
 		
 		<aui:input name="preferences--showHeader--" type="checkbox" value="<%= showHeader %>"/>
@@ -38,6 +36,13 @@
 		<aui:input name="preferences--width--" type="text" value="<%= width %>" />
 		
 		<aui:input name="preferences--height--" type="text" value="<%= height %>" />
+
+		<aui:input name="preferences--borderColor--" type="text" value="<%= borderColor %>" />
+
+		<aui:select name="preferences--colorsScheme--">
+			<aui:option label="light" selected='<%= colorsScheme.equals("") %>' value="" />
+			<aui:option label="dark" selected='<%= colorsScheme.equals("dark") %>' />
+		</aui:select>
 	</aui:fieldset>
 	
 	<aui:button-row>

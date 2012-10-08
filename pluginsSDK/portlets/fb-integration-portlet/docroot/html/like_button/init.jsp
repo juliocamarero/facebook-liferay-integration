@@ -20,9 +20,9 @@
 String urlToLike = preferences.getValue("urlToLike", StringPool.BLANK);
 String layoutStyle = preferences.getValue("layoutStyle", StringPool.BLANK);
 String verbToDisplay = preferences.getValue("verbToDisplay", StringPool.BLANK);
-String colorsScheme = preferences.getValue("colorsScheme", StringPool.BLANK);
 String font = preferences.getValue("font", StringPool.BLANK);
 boolean showFaces = GetterUtil.getBoolean(preferences.getValue("showFaces", Boolean.TRUE.toString()));
+boolean showSend = GetterUtil.getBoolean(preferences.getValue("showSend", Boolean.TRUE.toString()));
 String width = preferences.getValue("width", "300");
 String height = preferences.getValue("height", "300");
 %>

@@ -19,5 +19,6 @@
 <% 
 String maxRows = preferences.getValue("maxRows", "1");
 String width = preferences.getValue("width", "200");
+String size = preferences.getValue("size", "");
 String href = preferences.getValue("href", "");
 %>

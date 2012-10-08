@@ -27,6 +27,11 @@
 		<aui:input name="preferences--numPosts--" type="text" value="<%= numPosts %>" />
 		
 		<aui:input name="preferences--width--" type="text" value="<%= width %>" />
+
+		<aui:select name="preferences--colorsScheme--">
+			<aui:option label="light" selected='<%= colorsScheme.equals("") %>' value="" />
+			<aui:option label="dark" selected='<%= colorsScheme.equals("dark") %>' />
+		</aui:select>
 	</aui:fieldset>
 	
 	<aui:button-row>

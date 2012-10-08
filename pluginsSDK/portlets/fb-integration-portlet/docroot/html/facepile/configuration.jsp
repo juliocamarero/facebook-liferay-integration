@@ -29,6 +29,17 @@
 		<aui:input name="preferences--maxRows--" type="text" value="<%= maxRows %>" />
 		
 		<aui:input name="preferences--width--" type="text" value="<%= width %>" />
+
+		<aui:select name="preferences--size--">
+			<aui:option label="small" selected='<%= size.equals("small") %>'/>
+			<aui:option label="medium" selected='<%= size.equals("") %>'/>
+			<aui:option label="large" selected='<%= size.equals("large") %>'/>
+		</aui:select>
+
+		<aui:select name="preferences--colorsScheme--">
+			<aui:option label="light" selected='<%= colorsScheme.equals("") %>' value="" />
+			<aui:option label="dark" selected='<%= colorsScheme.equals("dark") %>' />
+		</aui:select>
 	</aui:fieldset>
 	
 	<aui:button-row>

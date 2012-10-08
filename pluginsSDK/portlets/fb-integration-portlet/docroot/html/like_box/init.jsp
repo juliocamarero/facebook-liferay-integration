@@ -18,10 +18,10 @@
 
 <%
 String href = preferences.getValue("href", StringPool.BLANK);
-String connections = preferences.getValue("connections", "10");
 String width = preferences.getValue("width", "250");
 String height = preferences.getValue("height", "750");
 boolean showStream = GetterUtil.getBoolean(preferences.getValue("showStream", Boolean.TRUE.toString()));
 boolean showHeader = GetterUtil.getBoolean(preferences.getValue("showHeader", Boolean.TRUE.toString()));
 boolean showFaces = GetterUtil.getBoolean(preferences.getValue("showFaces", Boolean.TRUE.toString()));
+String borderColor = preferences.getValue("borderColor", StringPool.BLANK);
 %>

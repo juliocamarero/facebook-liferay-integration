@@ -28,11 +28,14 @@
 		
 		<aui:select name="preferences--layoutStyle--">
 			<aui:option label="standard" selected='<%= layoutStyle.equals("") %>' value="" />
-			<aui:option label="buttonCount" selected='<%= layoutStyle.equals("buttonCount") %>' />
+			<aui:option label="buttonCount" selected='<%= layoutStyle.equals("button_count") %>' value="button_count" />
+			<aui:option label="boxCount" selected='<%= layoutStyle.equals("box_count") %>' value="box_count" />
 		</aui:select>
 		
 		<aui:input name="preferences--showFaces--" type="checkbox" value="<%= showFaces %>"/>
-	
+
+		<aui:input name="preferences--showSend--" type="checkbox" value="<%= showSend %>"/>
+
 		<aui:select name="preferences--verbToDisplay--">
 			<aui:option label="like" selected='<%= verbToDisplay.equals("") %>' value="" />
 			<aui:option label="recommend" selected='<%= verbToDisplay.equals("recommend")  %>' />
