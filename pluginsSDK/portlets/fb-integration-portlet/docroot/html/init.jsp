@@ -49,6 +49,8 @@ if (Validator.isNotNull(portletResource)) {
 	preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
 }
 
-boolean useFbSdk = GetterUtil.getBoolean(preferences.getValue("useFbSdk", StringPool.BLANK));
+boolean useFbSdk = GetterUtil.getBoolean(preferences.getValue("useFbSdk", "true"), true);
+
+String colorsScheme = preferences.getValue("colorsScheme", StringPool.BLANK);
 %>
 
