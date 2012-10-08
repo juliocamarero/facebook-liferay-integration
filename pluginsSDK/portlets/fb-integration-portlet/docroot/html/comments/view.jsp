@@ -16,10 +16,22 @@
 
 <%@ include file="init.jsp" %>
 
-<liferay-util:html-top outputKey="fb">
-	<script src="http://connect.facebook.net/<%= themeDisplay.getLanguageId()  %>/all.js#xfbml=1" type="text/javascript"></script>
-</liferay-util:html-top>
+<script type="text/javascript">
+	// Load the SDK Asynchronously
+    (function(d){
+      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
+      d.getElementsByTagName('head')[0].appendChild(js);
+    }(document));
+</script>
 
 <div style="text-align:center">
-	<fb:comments href="<%= href %>" num_posts="<%= numPosts %>" width="<%= width %>"></fb:comments>
+	<div
+		class="fb-comments"
+		data-href="<%= href %>"
+		data-num-posts="<%= numPosts %>"
+		data-width="<%= width %>"
+		data-colorscheme="<%= colorsScheme %>">
+	</div>
 </div>

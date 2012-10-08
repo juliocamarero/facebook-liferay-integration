@@ -19,19 +19,28 @@
 <div style="text-align:center">
 	<c:choose>
 		<c:when test="<%= useFbSdk %>">
-			<liferay-util:html-top outputKey="fb">
-				<script src="http://connect.facebook.net/<%= themeDisplay.getLanguageId()  %>/all.js#xfbml=1" type="text/javascript"></script>
-			</liferay-util:html-top>
+			<script type="text/javascript">
+				// Load the SDK Asynchronously
+			    (function(d){
+			      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+			      js = d.createElement('script'); js.id = id; js.async = true;
+			      js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
+			      d.getElementsByTagName('head')[0].appendChild(js);
+			    }(document));
+			</script>
 
-			<fb:like
-				href="<%= urlToLike %>"
-				<%= Validator.isNull(font) ? StringPool.BLANK : "font=\"" + font + "\""  %>
-				<%= Validator.isNull(layoutStyle) ? StringPool.BLANK : "layout_style=\"" + layoutStyle + "\""  %>
-				<%= Validator.isNull(verbToDisplay) ? StringPool.BLANK : "action=\"" + verbToDisplay + "\""  %>
-				<%= Validator.isNull(colorsScheme) ? StringPool.BLANK : "colorscheme=\"" + colorsScheme + "\""  %>
-				<%= showFaces ? StringPool.BLANK : "show_faces=\"" + showFaces + "\""  %>
-				width="<%= width %>" height="<%= height %>" send="true"
-			></fb:like>
+			<div
+				class="fb-like"
+				data-href="<%= urlToLike %>"
+				data-send="<%= showSend %>"
+				data-layout="<%= layoutStyle %>"
+				data-width="<%= width %>"
+				data-height="<%= height %>"
+				data-show-faces="<%= showFaces %>"
+				data-action="<%= verbToDisplay %>"
+				data-colorscheme="<%= colorsScheme %>"
+				data-font="<%= font %>">
+			</div>
 		</c:when>
 		<c:otherwise>
 			<iframe src="http://www.facebook.com/plugins/like.php?href=<%= HttpUtil.encodeURL(urlToLike) %>&amp;layout=<%= layoutStyle %>&amp;show_faces=<%= showFaces %>&amp;width=<%= width %>&amp;action=<%= verbToDisplay %>&amp;colorscheme=<%= colorScheme %>&amp;height=<%= height %>"

@@ -19,19 +19,27 @@
 <div style="text-align:center">
 	<c:choose>
 		<c:when test="<%= useFbSdk %>">
-			<liferay-util:html-top outputKey="fb">
-				<script src="http://connect.facebook.net/<%= themeDisplay.getLanguageId()  %>/all.js#xfbml=1" type="text/javascript"></script>
-			</liferay-util:html-top>
+			<script type="text/javascript">
+				// Load the SDK Asynchronously
+			    (function(d){
+			      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+			      js = d.createElement('script'); js.id = id; js.async = true;
+			      js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
+			      d.getElementsByTagName('head')[0].appendChild(js);
+			    }(document));
+			</script>
 
-			<fb:activity
-				site="<%= site  %>"
-				<%= Validator.isNull(font) ? StringPool.BLANK : "font=\"" + font + "\""  %>
-				<%= Validator.isNull(borderColor) ? StringPool.BLANK : "border_color=\"" + borderColor + "\""  %>
-				<%= Validator.isNull(colorsScheme) ? StringPool.BLANK : "colorscheme=\"" + colorsScheme + "\""  %>
-				<%= showHeader ? StringPool.BLANK : "header=\"" + showHeader + "\""  %>
-				<%= showRecommendations ? StringPool.BLANK : "recommendations=\"" + showRecommendations + "\""  %>
-				width="<%= width %>" height="<%= height %>"
-			></fb:activity>
+			<div
+				class="fb-activity"
+				data-href="<%= site  %>"
+				data-width="<%= width %>"
+				data-height="<%= height %>"
+				data-header="<%= showHeader %>"
+				data-colorscheme="<%= colorsScheme %>"
+				data-border-color="<%= borderColor %>"
+				data-font="<%= font %>"
+				data-recommendations="<%= showRecommendations %>">
+			</div>
 		</c:when>
 		<c:otherwise>
 			<iframe src="http://www.facebook.com/plugins/activity.php?site=<%= site %>&amp;width=<%= width %>&amp;height=<%= height %>&amp;header=<%= showHeader %>&amp;colorscheme=<%= colorScheme %>&amp;font=<%= font %>&amp;border_color=<%= borderColor %>&amp;recommendations=<%= showRecommendations %>"
