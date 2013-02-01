@@ -13,12 +13,15 @@
 	<servlet-filter>
 		<servlet-filter-name>OpenGraph Filter</servlet-filter-name>
 		<servlet-filter-impl>com.fb.filter.OpenGraphFilter</servlet-filter-impl>
+		<init-param>
+			<param-name>url-regex-ignore-pattern</param-name>
+			<param-value>^/html/.+\.(css|gif|html|ico|jpg|js|png)(\?.*)?$</param-value>
+		</init-param>
 	</servlet-filter>
 	<servlet-filter-mapping>
 		<servlet-filter-name>OpenGraph Filter</servlet-filter-name>
-		<before-filter>Valid Html Filter</before-filter>
+		<after-filter>Strip Filter</after-filter>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>REQUEST</dispatcher>
 	</servlet-filter-mapping>
 
