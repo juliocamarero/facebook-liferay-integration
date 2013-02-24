@@ -9,7 +9,6 @@ _sass_cache_*.css
 
 /*/*/docroot/WEB-INF/classes
 pluginsSDK/*/*/docroot/WEB-INF/classes/
-pluginsSDK/dist
 
 */build.*.properties
 *.iml
