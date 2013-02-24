@@ -22,7 +22,7 @@
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
 
 	<aui:fieldset>
-		<aui:input name="preferences--href--" type="text" value="<%= href %>" />
+		<aui:input label="site" name="preferences--href--" type="text" value="<%= href %>" />
 		
 		<aui:input name="preferences--numPosts--" type="text" value="<%= numPosts %>" />
 		
