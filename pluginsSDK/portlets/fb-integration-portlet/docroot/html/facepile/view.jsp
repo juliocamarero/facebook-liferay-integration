@@ -19,15 +19,7 @@
 <div style="text-align:center">
 	<c:choose>
 		<c:when test="<%= useFbSdk %>">
-			<script type="text/javascript">
-				// Load the SDK Asynchronously
-				(function(d){
-				  var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-				  js = d.createElement('script'); js.id = id; js.async = true;
-				  js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
-				  d.getElementsByTagName('head')[0].appendChild(js);
-				}(document));
-			</script>
+			<%@ include file="../fb_script.jspf" %>
 
 			<div
 				class="fb-facepile"
@@ -39,7 +31,7 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<iframe src="http://www.facebook.com/plugins/facepile.php?href=<%= HttpUtil.encodeURL(href) %>&amp;width=<%= width %>&amp;max_rows=<%= maxRows %>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px;" allowTransparency="true"></iframe>
+			<iframe src="//www.facebook.com/plugins/facepile.php?href=<%= HttpUtil.encodeURL(href) %>&amp;width=<%= width %>&amp;max_rows=<%= maxRows %>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px;" allowTransparency="true"></iframe>
 		</c:otherwise>
 	</c:choose>
 </div>
