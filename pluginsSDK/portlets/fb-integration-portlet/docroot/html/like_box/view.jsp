@@ -19,15 +19,7 @@
 <div style="text-align:center">
 	<c:choose>
 		<c:when test="<%= useFbSdk %>">
-			<script type="text/javascript">
-				// Load the SDK Asynchronously
-			    (function(d){
-			      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-			      js = d.createElement('script'); js.id = id; js.async = true;
-			      js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
-			      d.getElementsByTagName('head')[0].appendChild(js);
-			    }(document));
-			</script>
+			<%@ include file="../fb_script.jspf" %>
 
 			<div
 				class="fb-like-box"
@@ -43,7 +35,7 @@
 		</c:when>
 		<c:otherwise>
 			<iframe
-				src="http://www.facebook.com/plugins/likebox.php?href=<%= href %>&amp;width=<%= width %>&amp;stream=<%= showStream %>&amp;header=<%= showHeader %>&amp;show_faces=<%= showFaces %>&amp;height=<%= height %>"
+				src="//www.facebook.com/plugins/likebox.php?href=<%= href %>&amp;width=<%= width %>&amp;stream=<%= showStream %>&amp;header=<%= showHeader %>&amp;show_faces=<%= showFaces %>&amp;height=<%= height %>"
 			scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:<%= width %>px; height:<%= height %>px;" allowTransparency="true"></iframe>
 		</c:otherwise>
 	</c:choose>

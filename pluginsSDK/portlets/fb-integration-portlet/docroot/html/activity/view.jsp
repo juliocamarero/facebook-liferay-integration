@@ -19,15 +19,7 @@
 <div style="text-align:center">
 	<c:choose>
 		<c:when test="<%= useFbSdk %>">
-			<script type="text/javascript">
-				// Load the SDK Asynchronously
-			    (function(d){
-			      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-			      js = d.createElement('script'); js.id = id; js.async = true;
-			      js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
-			      d.getElementsByTagName('head')[0].appendChild(js);
-			    }(document));
-			</script>
+			<%@ include file="../fb_script.jspf" %>
 
 			<div
 				class="fb-activity"
@@ -42,7 +34,7 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<iframe src="http://www.facebook.com/plugins/activity.php?site=<%= site %>&amp;width=<%= width %>&amp;height=<%= height %>&amp;header=<%= showHeader %>&amp;colorscheme=<%= colorScheme %>&amp;font=<%= font %>&amp;border_color=<%= borderColor %>&amp;recommendations=<%= showRecommendations %>"
+			<iframe src="//www.facebook.com/plugins/activity.php?site=<%= site %>&amp;width=<%= width %>&amp;height=<%= height %>&amp;header=<%= showHeader %>&amp;colorscheme=<%= colorScheme %>&amp;font=<%= font %>&amp;border_color=<%= borderColor %>&amp;recommendations=<%= showRecommendations %>"
 				scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:<%= width %>px; height:<%= height %>px;" allowTransparency="true"></iframe>
 			</c:otherwise>
 	</c:choose>

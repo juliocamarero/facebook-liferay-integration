@@ -17,8 +17,8 @@
 <%@ include file="../init.jsp" %>
 
 <% 
-String maxRows = preferences.getValue("maxRows", "1");
-String width = preferences.getValue("width", "200");
+String maxRows = preferences.getValue("maxRows", "5");
+String width = preferences.getValue("width", "300");
 String size = preferences.getValue("size", "");
 String href = preferences.getValue("href", "");
 %>

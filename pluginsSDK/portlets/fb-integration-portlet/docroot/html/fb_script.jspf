@@ -1,0 +1,15 @@
+<liferay-util:html-bottom outputKey="taglib_ui_social_bookmark_facebook">
+	<div id="fb-root"></div>
+
+	<script>
+		// Load the SDK Asynchronously
+
+		(function(d, s, id) {
+	  		var js, fjs = d.getElementsByTagName(s)[0];
+	  		if (d.getElementById(id)) return;
+	 		js = d.createElement(s); js.id = id;
+	  		js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js#xfbml=1";
+	  		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+</liferay-util:html-bottom>
