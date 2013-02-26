@@ -35,8 +35,11 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<iframe src="//www.facebook.com/plugins/like.php?href=<%= HttpUtil.encodeURL(urlToLike) %>&amp;layout=<%= layoutStyle %>&amp;show_faces=<%= showFaces %>&amp;width=<%= width %>&amp;action=<%= verbToDisplay %>&amp;colorscheme=<%= colorScheme %>&amp;height=<%= height %>"
-				scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:80px;" allowTransparency="true"></iframe>
+
+			<%-- Send is false because it is only supported in facebook SDK --%>
+
+			<iframe src="//www.facebook.com/plugins/like.php?href=<%= HttpUtil.encodeURL(urlToLike) %>&amp;send=false&amp;layout=<%= layoutStyle %>&amp;show_faces=<%= showFaces %>&amp;width=<%= width %>&amp;action=<%= verbToDisplay %>&amp;colorscheme=<%= colorsScheme %>&amp;height=<%= height %>&amp;font=<%= font %>"
+				scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:<%= width %>px; height:<%= height %>px;" allowTransparency="true"></iframe>
 		</c:otherwise>
 	</c:choose>
 </div>
