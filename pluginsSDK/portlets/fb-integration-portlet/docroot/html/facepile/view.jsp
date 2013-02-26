@@ -31,7 +31,9 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<iframe src="//www.facebook.com/plugins/facepile.php?href=<%= HttpUtil.encodeURL(href) %>&amp;width=<%= width %>&amp;max_rows=<%= maxRows %>" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:200px;" allowTransparency="true"></iframe>
+			<iframe
+				src="//www.facebook.com/plugins/facepile.php?href=<%= HttpUtil.encodeURL(href) %>&amp;width=<%= width %>&amp;max_rows=<%= maxRows %>"
+				scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:<%= width %>px;" allowTransparency="true"></iframe>
 		</c:otherwise>
 	</c:choose>
 </div>
