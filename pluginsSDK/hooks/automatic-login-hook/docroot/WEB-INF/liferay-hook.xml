@@ -2,4 +2,10 @@
 <!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.2.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_2_0.dtd">
 
 <hook>
+	<custom-jsp-dir>/META-INF/custom_jsps</custom-jsp-dir>
+
+	<struts-action>
+		<struts-action-path>/login/facebook_connect_oauth</struts-action-path>
+		<struts-action-impl>com.fb.action.FacebookConnectAction</struts-action-impl>
+	</struts-action>
 </hook>
