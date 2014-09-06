@@ -16,16 +16,15 @@ package com.fb.filter;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.BaseFilter;
+import com.liferay.portal.kernel.servlet.BufferCacheServletResponse;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
-import com.liferay.portal.kernel.servlet.StringServletResponse;
+import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.HttpUtil;
-import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.liferay.portal.kernel.util.PrefsPropsUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.PortalUtil;
 
 import javax.servlet.FilterChain;
@@ -52,7 +51,7 @@ public class OpenGraphFilter extends BaseFilter {
 	}
 
 	protected String getContent(HttpServletRequest request, String content) {
-		if (Validator.isNull(_appNamespaces)) {
+		if (ArrayUtil.isEmpty(_appNamespaces)) {
 			if (_companyId == 0) {
 				_companyId = PortalUtil.getCompanyId(request);
 			}
@@ -66,7 +65,7 @@ public class OpenGraphFilter extends BaseFilter {
 			}
 		}
 
-		if (Validator.isNotNull(_appNamespaces)) {
+		if (ArrayUtil.isEmpty(_appNamespaces)) {
 			StringBundler sb = new StringBundler(2 + 4 * _appNamespaces.length);
 
 			sb.append(_START_HEAD);
@@ -113,37 +112,26 @@ public class OpenGraphFilter extends BaseFilter {
 			_log.debug("Adding Open Graph Attributes " + completeURL);
 		}
 
-		StringServletResponse stringServerResponse = new StringServletResponse(
-			response);
+		BufferCacheServletResponse bufferCacheServletResponse =
+			new BufferCacheServletResponse(response);
 
-		// LPS-30162
+		processFilter(
+			OpenGraphFilter.class, request, bufferCacheServletResponse,
+			filterChain);
 
-		Thread currentThread = Thread.currentThread();
-
-		ClassLoader contextClassLoader = currentThread.getContextClassLoader();
-		currentThread.setContextClassLoader(
-			PortalClassLoaderUtil.getClassLoader());
-
-		try {
-			processFilter(
-				OpenGraphFilter.class, request, stringServerResponse, filterChain);
-		}
-		finally {
-			currentThread.setContextClassLoader(contextClassLoader);
-		}
+		String content = bufferCacheServletResponse.getString();
 
 		String contentType = response.getContentType();
 
 		if ((contentType != null) &&
 			contentType.startsWith(ContentTypes.TEXT_HTML)) {
 
-			String content = getContent(
-				request, stringServerResponse.getString());
+			content = getContent(request, content);
 
 			ServletResponseUtil.write(response, content);
 		}
 		else {
-			ServletResponseUtil.write(response, stringServerResponse);
+			ServletResponseUtil.write(response, bufferCacheServletResponse);
 		}
 	}
 

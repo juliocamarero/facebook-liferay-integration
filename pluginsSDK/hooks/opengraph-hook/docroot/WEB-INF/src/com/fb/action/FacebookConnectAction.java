@@ -16,6 +16,8 @@ package com.fb.action;
 import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.kernel.facebook.FacebookConnectUtil;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.struts.BaseStrutsAction;
 import com.liferay.portal.kernel.struts.StrutsAction;
 import com.liferay.portal.kernel.util.CalendarFactoryUtil;
@@ -80,8 +82,7 @@ public class FacebookConnectAction extends BaseStrutsAction {
 			setFacebookCredentials(session, themeDisplay.getCompanyId(), token);
 		}
 		else {
-			//Something wrong has happened
-			//System.out.println("there is no token!");
+			_log.error("there is not token from facebook");
 
 			//return mapping.findForward("/common/referer_jsp.jsp");
 		}
@@ -300,5 +301,8 @@ public class FacebookConnectAction extends BaseStrutsAction {
 	private String FACEBOOK_USER_EMAIL_ADDRESS = "FACEBOOK_USER_EMAIL_ADDRESS";
 
 	private String FACEBOOK_USER_ID = "FACEBOOK_USER_ID";
+
+	private static Log _log = LogFactoryUtil.getLog(
+		FacebookConnectAction.class);
 
 }

@@ -17,7 +17,6 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.struts.BaseStrutsAction;
 import com.liferay.portal.kernel.struts.StrutsAction;
-import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -46,20 +45,7 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 
 		addOpenGraphProperties(request);
 
-		// LPS-30162
-
-		Thread currentThread = Thread.currentThread();
-
-		ClassLoader contextClassLoader = currentThread.getContextClassLoader();
-		currentThread.setContextClassLoader(
-			PortalClassLoaderUtil.getClassLoader());
-
-		try {
-			return originalStrutsAction.execute(request, response);
-		}
-		finally {
-			currentThread.setContextClassLoader(contextClassLoader);
-		}
+		return originalStrutsAction.execute(request, response);
 	}
 
 	protected void addOpenGraphProperties(HttpServletRequest request)
