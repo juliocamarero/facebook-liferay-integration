@@ -36,7 +36,9 @@ String ogAudio = layoutTypeSettings.getProperty("og-audio");
 String ogDeterminer = layoutTypeSettings.getProperty("og-determiner");
 %>
 
-<liferay-ui:error-marker key="errorSection" value="open-graph" />
+<liferay-ui:error-marker key="errorSection" value="facebook-preview" />
+
+<h3><liferay-ui:message key="facebook-preview" /></h3>
 
 <aui:model-context bean="<%= selLayout %>" model="<%= Layout.class %>" />
 

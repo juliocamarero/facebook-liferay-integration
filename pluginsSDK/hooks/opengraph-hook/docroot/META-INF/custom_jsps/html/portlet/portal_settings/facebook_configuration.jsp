@@ -22,9 +22,9 @@ String APP_NAMESPACES = "APP_NAMESPACES";
 String appNamespace = PrefsPropsUtil.getString(company.getCompanyId(), APP_NAMESPACES);
 %>
 
-<liferay-ui:error-marker key="errorSection" value="open-graph" />
+<liferay-ui:error-marker key="errorSection" value="facebook-configuration" />
 
-<h3><liferay-ui:message key="open-graph-configuration" /></h3>
+<h3><liferay-ui:message key="facebook-configuration" /></h3>
 
 <div class="portlet-msg-info">
 	<liferay-ui:message key="open-graph-help" />
