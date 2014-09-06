@@ -17,7 +17,7 @@
 		//Autenticar al usuario
 
 		}
-}
+	}
 
 	// Load the SDK Asynchronously
 	(function(d) {
