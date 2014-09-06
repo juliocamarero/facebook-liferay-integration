@@ -1,4 +1,4 @@
-<%@ page import="com.liferay.portal.util.FacebookConnectUtil" %>
+<%@ page import="com.liferay.portal.kernel.facebook.FacebookConnectUtil" %>
 
 <%@ include file="/html/common/init.jsp" %>
 
