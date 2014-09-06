@@ -1,6 +1,6 @@
-<%
+<%--
 /**
- * Copyright (c) 2000-2010 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,7 +12,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-%>
+--%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -25,18 +25,13 @@
 <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ taglib uri="http://liferay.com/tld/util" prefix="liferay-util" %>
 
+<%@ page import="com.liferay.portal.kernel.util.GetterUtil" %><%@
+page import="com.liferay.portal.kernel.util.ParamUtil" %><%@
+page import="com.liferay.portal.kernel.util.StringPool" %><%@
+page import="com.liferay.portal.kernel.util.Validator" %><%@
+page import="com.liferay.portlet.PortletPreferencesFactoryUtil" %>
+
 <%@ page import="javax.portlet.PortletPreferences" %>
-
-<%@ page import="com.liferay.portal.kernel.util.Constants" %>
-<%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
-<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
-<%@ page import="com.liferay.portal.kernel.util.Validator" %>
-<%@ page import="com.liferay.portal.kernel.util.HttpUtil" %>
-<%@ page import="com.liferay.portal.kernel.util.StringBundler" %>
-
-<%@ page import="com.liferay.portal.kernel.util.StringPool" %>
-
-<%@ page import="com.liferay.portlet.PortletPreferencesFactoryUtil" %>
 
 <portlet:defineObjects />
 <liferay-theme:defineObjects />
@@ -54,4 +49,3 @@ boolean useFbSdk = GetterUtil.getBoolean(preferences.getValue("useFbSdk", "true"
 
 String colorsScheme = preferences.getValue("colorsScheme", StringPool.BLANK);
 %>
-

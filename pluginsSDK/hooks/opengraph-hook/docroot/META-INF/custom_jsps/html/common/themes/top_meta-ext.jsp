@@ -2,7 +2,7 @@
 
 <%@ include file="/html/common/init.jsp" %>
 
-<meta property="fb:app_id" content="<%= FacebookConnectUtil.getAppId(company.getCompanyId())%>" />
+<meta content="<%= FacebookConnectUtil.getAppId(company.getCompanyId()) %>" property="fb:app_id" />
 
 <%
 Map<String, String> opengraphAttributes = (Map<String, String>)request.getAttribute("LIFERAY_SHARED_OPENGRAPH");
@@ -11,7 +11,7 @@ if (opengraphAttributes != null) {
 	for (String key : opengraphAttributes.keySet()) {
 %>
 
-		<meta property="og:<%= key %>" content="<%= HtmlUtil.escape(opengraphAttributes.get(key)) %>" />
+		<meta content="<%= HtmlUtil.escape(opengraphAttributes.get(key)) %>" property="og:<%= key %>" />
 
 <%
 	}

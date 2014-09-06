@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -13,7 +13,6 @@
  */
 package com.fb.action;
 
-
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.struts.BaseStrutsAction;
@@ -21,18 +20,18 @@ import com.liferay.portal.kernel.struts.StrutsAction;
 import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.theme.ThemeDisplay;
-import com.liferay.portal.kernel.util.WebKeys;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.webserver.WebServerServletTokenUtil;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Julio Camarero
@@ -64,7 +63,7 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 	}
 
 	protected void addOpenGraphProperties(HttpServletRequest request)
-		throws SystemException, PortalException {
+		throws PortalException, SystemException {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
 			WebKeys.THEME_DISPLAY);
@@ -121,15 +120,15 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 			ogDescription = layout.getDescription(themeDisplay.getLanguageId());
 		}
 
-		if (Validator.isNotNull(ogDescription)){
+		if (Validator.isNotNull(ogDescription)) {
 			opengraphAttributes.put("description",ogDescription);
 		}
 
-		if (Validator.isNotNull(ogVideo)){
+		if (Validator.isNotNull(ogVideo)) {
 			opengraphAttributes.put("video", ogVideo);
 		}
 
-		if (Validator.isNotNull(ogAudio)){
+		if (Validator.isNotNull(ogAudio)) {
 			opengraphAttributes.put("audio", ogAudio);
 		}
 

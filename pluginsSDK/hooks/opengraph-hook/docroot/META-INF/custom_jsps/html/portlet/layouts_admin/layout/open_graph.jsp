@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,7 +12,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
- --%>
+--%>
 
 <%@ include file="/html/portlet/layouts_admin/init.jsp" %>
 
@@ -57,8 +57,8 @@ String ogDeterminer = layoutTypeSettings.getProperty("og-determiner");
 
 	<aui:select label="determiner" name="TypeSettingsProperties--og-determiner--">
 		<aui:option label="" value="auto" />
-		<aui:option selected='<%= Validator.equals(ogDeterminer, "a") %>' label="a" />
-		<aui:option selected='<%= Validator.equals(ogDeterminer, "an") %>' label="an" />
-		<aui:option selected='<%= Validator.equals(ogDeterminer, "the") %>' label="the" />
+		<aui:option label="a" selected='<%= Validator.equals(ogDeterminer, "a") %>' />
+		<aui:option label="an" selected='<%= Validator.equals(ogDeterminer, "an") %>' />
+		<aui:option label="the" selected='<%= Validator.equals(ogDeterminer, "the") %>' />
 	</aui:select>
 </aui:fieldset>

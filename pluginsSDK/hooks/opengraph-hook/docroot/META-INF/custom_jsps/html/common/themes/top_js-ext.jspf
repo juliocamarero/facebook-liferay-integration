@@ -1,31 +1,29 @@
 <script>
 	window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '<%= FacebookConnectUtil.getAppId(company.getCompanyId()) %>', // App ID
-        status     : true, // check login status
-        cookie     : true, // enable cookies to allow the server to access the session
-        xfbml      : true  // parse XFBML
-      });
-    };
+	  FB.init({
+		appId      : '<%= FacebookConnectUtil.getAppId(company.getCompanyId()) %>', // App ID
+		status     : true, // check login status
+		cookie     : true, // enable cookies to allow the server to access the session
+		xfbml      : true  // parse XFBML
+	  });
+	};
 
 	function handleStatusChange(response) {
-        alert(response);
 		console.log(response);
 
 		document.body.className = response.authResponse ? 'connected' : 'not_connected';
 
-     if (response.authResponse) {
-	    //Autenticar al usuario
+		if (response.authResponse) {
+		//Autenticar al usuario
 
-       console.log(response);
-     }
-   }
+		}
+}
 
-    // Load the SDK Asynchronously
-    (function(d){
-      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-      js = d.createElement('script'); js.id = id; js.async = true;
-      js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
-      d.getElementsByTagName('head')[0].appendChild(js);
-    }(document));
+	// Load the SDK Asynchronously
+	(function(d) {
+	  var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+	  js = d.createElement('script'); js.id = id; js.async = true;
+	  js.src = "//connect.facebook.net/<%= locale.getLanguage() %>_<%= locale.getCountry() %>/all.js";
+	  d.getElementsByTagName('head')[0].appendChild(js);
+	}(document));
 </script>

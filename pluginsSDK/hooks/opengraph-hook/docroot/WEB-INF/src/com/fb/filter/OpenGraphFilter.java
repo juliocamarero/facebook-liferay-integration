@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -21,17 +21,16 @@ import com.liferay.portal.kernel.servlet.StringServletResponse;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.HttpUtil;
 import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
+import com.liferay.portal.kernel.util.PrefsPropsUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.PortalUtil;
-import com.liferay.portal.kernel.util.PrefsPropsUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 /**
  * @author Julio Camarero
@@ -85,6 +84,10 @@ public class OpenGraphFilter extends BaseFilter {
 		}
 
 		return content;
+	}
+
+	protected Log getLog() {
+		return _log;
 	}
 
 	protected boolean isAlreadyFiltered(HttpServletRequest request) {
@@ -144,15 +147,11 @@ public class OpenGraphFilter extends BaseFilter {
 		}
 	}
 
-	protected Log getLog() {
-		return _log;
-	}
-
-	private long _companyId = 0;
-	private String[] _appNamespaces = null;
-
 	private static final String _START_HEAD = "<head";
 
 	private static Log _log = LogFactoryUtil.getLog(OpenGraphFilter.class);
+
+	private String[] _appNamespaces = null;
+	private long _companyId = 0;
 
 }

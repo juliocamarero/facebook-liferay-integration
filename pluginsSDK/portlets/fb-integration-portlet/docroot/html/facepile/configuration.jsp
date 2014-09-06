@@ -1,6 +1,6 @@
 <%
 /**
-* Copyright (c) 2000-2010 Liferay, Inc. All rights reserved.
+* Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
 *
 * This library is free software; you can redistribute it and/or modify it under
 * the terms of the GNU Lesser General Public License as published by the Free
@@ -22,12 +22,12 @@
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
 
 	<aui:fieldset>
-		<aui:input label="use-fb-sdk" name="preferences--useFbSdk--" type="checkbox" value="<%= useFbSdk %>"/>
+		<aui:input label="use-fb-sdk" name="preferences--useFbSdk--" type="checkbox" value="<%= useFbSdk %>" />
 
 		<aui:input label="page-url" name="preferences--href--" type="text" value="<%= href %>" />
 
 		<aui:input name="preferences--maxRows--" type="text" value="<%= maxRows %>" />
-		
+
 		<aui:input name="preferences--width--" type="text" value="<%= width %>" />
 
 		<aui:select name="preferences--size--">
@@ -41,7 +41,7 @@
 			<aui:option label="dark" selected='<%= colorsScheme.equals("dark") %>' />
 		</aui:select>
 	</aui:fieldset>
-	
+
 	<aui:button-row>
 		<aui:button type="submit" />
 	</aui:button-row>
