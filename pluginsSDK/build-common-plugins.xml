@@ -4,6 +4,16 @@
 <project name="build-common-plugins" xmlns:antelope="antlib:ise.antelope.tasks">
 	<import file="build-common.xml" />
 
+	<if>
+		<equals arg1="${basedir}" arg2="${user.dir}" />
+		<then>
+			<property name="plugin.type.dir" value=".." />
+		</then>
+		<else>
+			<property name="plugin.type.dir" value="${basedir}" />
+		</else>
+	</if>
+
 	<target name="build-service">
 		<for param="service.file">
 			<path>
@@ -27,43 +37,38 @@
 	</target>
 
 	<target name="clean">
-		<antcall target="loop-modules">
-			<param name="loop.modules.cmd" value="clean-module" />
-		</antcall>
-	</target>
-
-	<target name="clean-module">
-		<ant dir="${module.name}" target="clean" inheritAll="false" />
+		<loop-modules
+			loop.modules.cmd="clean"
+			loop.modules.dir="."
+		/>
 	</target>
 
 	<target name="compile">
-		<antcall target="loop-modules">
-			<param name="loop.modules.cmd" value="compile-module" />
-		</antcall>
-	</target>
-
-	<target name="compile-module">
-		<ant dir="${module.name}" target="compile" inheritAll="false" />
+		<loop-modules
+			loop.modules.cmd="compile"
+			loop.modules.dir="."
+		/>
 	</target>
 
 	<target name="deploy">
-		<antcall target="loop-modules">
-			<param name="loop.modules.cmd" value="deploy-module" />
-		</antcall>
+		<loop-modules
+			loop.modules.cmd="deploy"
+			loop.modules.dir="."
+		/>
 	</target>
 
-	<target name="deploy-module">
-		<ant dir="${module.name}" target="deploy" inheritAll="false" />
+	<target name="direct-deploy">
+		<loop-modules
+			loop.modules.cmd="direct-deploy"
+			loop.modules.dir="."
+		/>
 	</target>
 
 	<target name="jar">
-		<antcall target="loop-modules">
-			<param name="loop.modules.cmd" value="jar-module" />
-		</antcall>
-	</target>
-
-	<target name="jar-module">
-		<ant dir="${module.name}" target="jar" inheritAll="false" />
+		<loop-modules
+			loop.modules.cmd="jar"
+			loop.modules.dir="."
+		/>
 	</target>
 
 	<target name="loop-modules">
@@ -101,12 +106,9 @@
 	</target>
 
 	<target name="war">
-		<antcall target="loop-modules">
-			<param name="loop.modules.cmd" value="war-module" />
-		</antcall>
-	</target>
-
-	<target name="war-module">
-		<ant dir="${module.name}" target="war" inheritAll="false" />
+		<loop-modules
+			loop.modules.cmd="war"
+			loop.modules.dir="."
+		/>
 	</target>
 </project>
