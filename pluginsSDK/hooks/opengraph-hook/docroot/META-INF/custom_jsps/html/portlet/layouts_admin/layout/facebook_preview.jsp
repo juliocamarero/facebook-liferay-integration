@@ -42,7 +42,7 @@ String ogDeterminer = layoutTypeSettings.getProperty("og-determiner");
 
 <aui:model-context bean="<%= selLayout %>" model="<%= Layout.class %>" />
 
-<h3><liferay-ui:message key="required-metadata" /></h3>
+<h4><liferay-ui:message key="required-metadata" /></h4>
 
 <aui:fieldset>
 	<aui:input helpMessage="og-title-help" label="title" name="TypeSettingsProperties--og-title--" type="text" value="<%= ogTitle %>" />
@@ -50,7 +50,7 @@ String ogDeterminer = layoutTypeSettings.getProperty("og-determiner");
 	<aui:input helpMessage="og-image-help" label="image-url" name="TypeSettingsProperties--og-image--" type="text" value="<%= ogImage %>" />
 </aui:fieldset>
 
-<h3><liferay-ui:message key="optional-metadata" /></h3>
+<h4><liferay-ui:message key="optional-metadata" /></h4>
 
 <aui:fieldset>
 	<aui:input helpMessage="og-description-help" label="description" name="TypeSettingsProperties--og-description--" type="text" value="<%= ogDescription %>" />
