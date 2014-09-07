@@ -6,29 +6,39 @@ More and more often, every virtual entity also has a facebook page (companies, c
 ## Goals of the project
 This project will benefit site administrators who maintain a website built in Liferay and a **facebook page** linked to that website. It will also benefit end users since they will be able to interact with their website both from facebook or Liferay.
 
-Initially, this project contains some plugins (portlets) for having the **facebook social apps** (comments, like boxes... etc)
+Currently, this project contains two apps:
+ * A set of portlets which enhance the **facebook social apps** (comments, like boxes... etc)
+ * An Open Graph Hook that improves and allow end users to customize the previews of your content displayed on facebook.
 
 Some developments to come:
 
-* Integration of the openGraph protocol
 * Integration of facebook comments on top of liferay comments
 * Automatic integration of Sites with Facebook pages
 * ...
 * ?
 
-Below there are some screenshots of the current portlets that are available:
+These are some screenshots of the **facebook social apps** portlets:
 
-<img alt="Facebook Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/portlets.png" />
+<img alt="Facebook Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/social_apps/portlets.png" />
 
-<img alt="Facebook Like Box in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/like-box.png" />
+<img alt="Facebook Like Box in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/social_apps/like-box.png" />
 
-<img alt="Facebook Like Button in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/like-button.png" />
+<img alt="Facebook Like Button in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/social_apps/like-button.png" />
 
-<img alt="Facebook Comments in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/comments.png" />
+<img alt="Facebook Comments in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/social_apps/comments.png" />
 
-<img alt="Facebook Face Pile in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/facepile.png" />
+<img alt="Facebook Face Pile in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/social_apps/facepile.png" />
 
-<img alt="Facebook Recent Activity in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/recent-activity.png" />
+<img alt="Facebook Recent Activity in a Liferay portlet" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/social_apps/recent-activity.png" />
+
+
+And these are some screenshots of the **facebook preview** (Open Graph) hook:
+
+<img alt="Facebook Preview" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/open_graph/facebook_preview.jpg" />
+
+<img alt="Facebook Preview Configuration for a page" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/open_graph/facebook_preview_pages.jpg" />
+
+<img alt="Facebook Preview Global Configuration" src="https://github.com/juliocamarero/facebook-liferay-integration/raw/master/images/screenshots/open_graph/facebook_preview_settings.jpg" />
 
 ## License
 

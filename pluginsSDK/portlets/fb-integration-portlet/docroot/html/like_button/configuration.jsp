@@ -1,6 +1,6 @@
 <%
 /**
-* Copyright (c) 2000-2010 Liferay, Inc. All rights reserved.
+* Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
 *
 * This library is free software; you can redistribute it and/or modify it under
 * the terms of the GNU Lesser General Public License as published by the Free
@@ -22,40 +22,40 @@
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= Constants.UPDATE %>" />
 
 	<aui:fieldset>
-		<aui:input label="use-fb-sdk" name="preferences--useFbSdk--" type="checkbox" value="<%= useFbSdk %>"/>
-		
+		<aui:input label="use-fb-sdk" name="preferences--useFbSdk--" type="checkbox" value="<%= useFbSdk %>" />
+
 		<aui:input name="preferences--urlToLike--" type="text" value="<%= urlToLike %>" />
-		
+
 		<aui:select name="preferences--layoutStyle--">
 			<aui:option label="standard" selected='<%= layoutStyle.equals("") %>' value="" />
 			<aui:option label="buttonCount" selected='<%= layoutStyle.equals("button_count") %>' value="button_count" />
 			<aui:option label="boxCount" selected='<%= layoutStyle.equals("box_count") %>' value="box_count" />
 		</aui:select>
-		
-		<aui:input name="preferences--showFaces--" type="checkbox" value="<%= showFaces %>"/>
 
-		<aui:input name="preferences--showSend--" type="checkbox" value="<%= showSend %>"/>
+		<aui:input name="preferences--showFaces--" type="checkbox" value="<%= showFaces %>" />
+
+		<aui:input name="preferences--showSend--" type="checkbox" value="<%= showSend %>" />
 
 		<aui:select name="preferences--verbToDisplay--">
 			<aui:option label="like" selected='<%= verbToDisplay.equals("") %>' value="" />
-			<aui:option label="recommend" selected='<%= verbToDisplay.equals("recommend")  %>' />
+			<aui:option label="recommend" selected='<%= verbToDisplay.equals("recommend") %>' />
 		</aui:select>
-		
+
 		<aui:select name="preferences--colorsScheme--">
 			<aui:option label="light" selected='<%= colorsScheme.equals("") %>' value="" />
 			<aui:option label="dark" selected='<%= colorsScheme.equals("dark") %>' />
 		</aui:select>
-		
+
 		<aui:select name="preferences--font--" showEmptyOption="true">
 			<aui:option label="arial" selected='<%= font.equals("arial") %>' />
 			<aui:option label="verdana" selected='<%= font.equals("verdana") %>' />
 		</aui:select>
-		
+
 		<aui:input name="preferences--width--" type="text" value="<%= width %>" />
-		
+
 		<aui:input name="preferences--height--" type="text" value="<%= height %>" />
 	</aui:fieldset>
-	
+
 	<aui:button-row>
 		<aui:button type="submit" />
 	</aui:button-row>

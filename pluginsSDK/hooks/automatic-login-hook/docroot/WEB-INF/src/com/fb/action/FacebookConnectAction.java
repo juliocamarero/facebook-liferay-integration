@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -13,10 +13,11 @@
  */
 package com.fb.action;
 
-
 import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.kernel.facebook.FacebookConnectUtil;
 import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.struts.BaseStrutsAction;
 import com.liferay.portal.kernel.struts.StrutsAction;
 import com.liferay.portal.kernel.util.CalendarFactoryUtil;
@@ -37,27 +38,22 @@ import com.liferay.portlet.expando.NoSuchTableException;
 import com.liferay.portlet.expando.model.ExpandoColumn;
 import com.liferay.portlet.expando.model.ExpandoColumnConstants;
 import com.liferay.portlet.expando.model.ExpandoTable;
-import com.liferay.portlet.expando.model.ExpandoTableConstants;
-import com.liferay.portlet.expando.model.ExpandoValue;
 import com.liferay.portlet.expando.service.ExpandoColumnLocalServiceUtil;
 import com.liferay.portlet.expando.service.ExpandoTableLocalServiceUtil;
 import com.liferay.portlet.expando.service.ExpandoValueLocalServiceUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Julio Camarero
  */
 public class FacebookConnectAction extends BaseStrutsAction {
-	private String FACEBOOK_ACCESS_TOKEN = "FACEBOOK_ACCESS_TOKEN";
-	private String FACEBOOK_USER_EMAIL_ADDRESS = "FACEBOOK_USER_EMAIL_ADDRESS";
-	private String FACEBOOK_USER_ID = "FACEBOOK_USER_ID";
-
 	@Override
 	public String execute(
 			StrutsAction originalStrutsAction, HttpServletRequest request,
@@ -86,8 +82,7 @@ public class FacebookConnectAction extends BaseStrutsAction {
 			setFacebookCredentials(session, themeDisplay.getCompanyId(), token);
 		}
 		else {
-			//Something wrong has happened
-			//System.out.println("there is no token!");
+			_log.error("there is not token from facebook");
 
 			//return mapping.findForward("/common/referer_jsp.jsp");
 		}
@@ -148,6 +143,43 @@ public class FacebookConnectAction extends BaseStrutsAction {
 		return user;
 	}
 
+	protected void saveTokenExpando(User user, String accesToken)
+		throws Exception {
+
+		ExpandoTable table = null;
+
+		long companyId = user.getCompanyId();
+
+		try {
+			table = ExpandoTableLocalServiceUtil.getDefaultTable(
+				companyId, User.class.getName());
+		}
+		catch (NoSuchTableException nste) {
+			table = ExpandoTableLocalServiceUtil.addDefaultTable(
+				companyId, User.class.getName());
+		}
+
+		ExpandoColumn column = null;
+
+		long tableId = table.getTableId();
+
+		try {
+			column = ExpandoColumnLocalServiceUtil.addColumn(
+				tableId, "access_token", ExpandoColumnConstants.STRING);
+		}
+		catch (DuplicateColumnNameException dcne) {
+			column = ExpandoColumnLocalServiceUtil.getColumn(
+				tableId, "access_token");
+		}
+
+		long classNameId = table.getClassNameId();
+		long columnId = column.getColumnId();
+		long classPK = user.getUserId();
+
+		ExpandoValueLocalServiceUtil.addValue(
+			classNameId, tableId, columnId, classPK, accesToken);
+	}
+
 	protected void setFacebookCredentials(
 			HttpSession session, long companyId, String token)
 		throws Exception {
@@ -173,8 +205,7 @@ public class FacebookConnectAction extends BaseStrutsAction {
 		long facebookId = jsonObject.getLong("id");
 
 		if (facebookId > 0) {
-			session.setAttribute(
-				FACEBOOK_USER_ID, String.valueOf(facebookId));
+			session.setAttribute(FACEBOOK_USER_ID, String.valueOf(facebookId));
 
 			try {
 				user = UserLocalServiceUtil.getUserByFacebookId(
@@ -187,8 +218,7 @@ public class FacebookConnectAction extends BaseStrutsAction {
 		String emailAddress = jsonObject.getString("email");
 
 		if ((user == null) && Validator.isNotNull(emailAddress)) {
-			session.setAttribute(
-				FACEBOOK_USER_EMAIL_ADDRESS, emailAddress);
+			session.setAttribute(FACEBOOK_USER_EMAIL_ADDRESS, emailAddress);
 
 			try {
 				user = UserLocalServiceUtil.getUserByEmailAddress(
@@ -206,43 +236,6 @@ public class FacebookConnectAction extends BaseStrutsAction {
 		}
 
 		saveTokenExpando(user, token);
-	}
-
-	protected void saveTokenExpando(User user, String accesToken)
-		throws Exception{
-
-		ExpandoTable table = null;
-
-		long companyId = user.getCompanyId();
-
-		try {
-			table = ExpandoTableLocalServiceUtil.getDefaultTable(
-				companyId, User.class.getName());
-		}
-		catch(NoSuchTableException nste) {
-			table = ExpandoTableLocalServiceUtil.addDefaultTable(
-				companyId, User.class.getName());
-		}
-
-		ExpandoColumn column = null;
-
-		long tableId = table.getTableId();
-
-		try {
-			column = ExpandoColumnLocalServiceUtil.addColumn(
-				tableId, "access_token", ExpandoColumnConstants.STRING);
-		}
-		catch(DuplicateColumnNameException dcne) {
-			column = ExpandoColumnLocalServiceUtil.getColumn(
-				tableId, "access_token");
-		}
-
-		long classNameId = table.getClassNameId();
-		long columnId = column.getColumnId();
-		long classPK = user.getUserId();
-
-		ExpandoValueLocalServiceUtil.addValue(
-			classNameId, tableId, columnId, classPK, accesToken);
 	}
 
 	protected User updateUser(User user, JSONObject jsonObject)
@@ -302,5 +295,14 @@ public class FacebookConnectAction extends BaseStrutsAction {
 			groupIds, organizationIds, roleIds, userGroupRoles, userGroupIds,
 			serviceContext);
 	}
+
+	private String FACEBOOK_ACCESS_TOKEN = "FACEBOOK_ACCESS_TOKEN";
+
+	private String FACEBOOK_USER_EMAIL_ADDRESS = "FACEBOOK_USER_EMAIL_ADDRESS";
+
+	private String FACEBOOK_USER_ID = "FACEBOOK_USER_ID";
+
+	private static Log _log = LogFactoryUtil.getLog(
+		FacebookConnectAction.class);
 
 }

@@ -1,6 +1,6 @@
 <%--
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,7 +12,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
- --%>
+--%>
 
 <%@ include file="/html/portlet/layouts_admin/init.jsp" %>
 
@@ -36,11 +36,13 @@ String ogAudio = layoutTypeSettings.getProperty("og-audio");
 String ogDeterminer = layoutTypeSettings.getProperty("og-determiner");
 %>
 
-<liferay-ui:error-marker key="errorSection" value="open-graph" />
+<liferay-ui:error-marker key="errorSection" value="facebook-preview" />
+
+<h3><liferay-ui:message key="facebook-preview" /></h3>
 
 <aui:model-context bean="<%= selLayout %>" model="<%= Layout.class %>" />
 
-<h3><liferay-ui:message key="required-metadata" /></h3>
+<h4><liferay-ui:message key="required-metadata" /></h4>
 
 <aui:fieldset>
 	<aui:input helpMessage="og-title-help" label="title" name="TypeSettingsProperties--og-title--" type="text" value="<%= ogTitle %>" />
@@ -48,7 +50,7 @@ String ogDeterminer = layoutTypeSettings.getProperty("og-determiner");
 	<aui:input helpMessage="og-image-help" label="image-url" name="TypeSettingsProperties--og-image--" type="text" value="<%= ogImage %>" />
 </aui:fieldset>
 
-<h3><liferay-ui:message key="optional-metadata" /></h3>
+<h4><liferay-ui:message key="optional-metadata" /></h4>
 
 <aui:fieldset>
 	<aui:input helpMessage="og-description-help" label="description" name="TypeSettingsProperties--og-description--" type="text" value="<%= ogDescription %>" />
@@ -57,8 +59,8 @@ String ogDeterminer = layoutTypeSettings.getProperty("og-determiner");
 
 	<aui:select label="determiner" name="TypeSettingsProperties--og-determiner--">
 		<aui:option label="" value="auto" />
-		<aui:option selected='<%= Validator.equals(ogDeterminer, "a") %>' label="a" />
-		<aui:option selected='<%= Validator.equals(ogDeterminer, "an") %>' label="an" />
-		<aui:option selected='<%= Validator.equals(ogDeterminer, "the") %>' label="the" />
+		<aui:option label="a" selected='<%= Validator.equals(ogDeterminer, "a") %>' />
+		<aui:option label="an" selected='<%= Validator.equals(ogDeterminer, "an") %>' />
+		<aui:option label="the" selected='<%= Validator.equals(ogDeterminer, "the") %>' />
 	</aui:select>
 </aui:fieldset>
