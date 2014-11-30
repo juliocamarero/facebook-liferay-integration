@@ -99,8 +99,11 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 
 		opengraphAttributes.put("type", ogType);
 
-		opengraphAttributes.put("url", PortalUtil.getCanonicalURL(
-			PortalUtil.getLayoutFullURL(themeDisplay), themeDisplay, layout));
+		String url = PortalUtil.getCanonicalURL(
+			PortalUtil.getLayoutFullURL(themeDisplay), themeDisplay, layout);
+
+		opengraphAttributes.put("url", url);
+		twitterAttributes.put("url", url);
 
 		if (Validator.isNull(ogTitle)) {
 			ogTitle = layout.getTitle(themeDisplay.getLanguageId());
