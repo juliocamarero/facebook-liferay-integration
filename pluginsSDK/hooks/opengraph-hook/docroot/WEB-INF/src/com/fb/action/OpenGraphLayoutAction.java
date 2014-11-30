@@ -17,6 +17,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.struts.BaseStrutsAction;
 import com.liferay.portal.kernel.struts.StrutsAction;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -165,11 +166,11 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 
 
 		if (Validator.isNotNull(twSite)) {
-			twitterAttributes.put("site", twSite);
+			twitterAttributes.put("site", StringPool.AT + twSite);
 		}
 
 		if (Validator.isNotNull(twCreator)) {
-			twitterAttributes.put("creator", twCreator);
+			twitterAttributes.put("creator", StringPool.AT + twCreator);
 		}
 		
 	}
