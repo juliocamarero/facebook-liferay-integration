@@ -20,7 +20,7 @@
 	</servlet-filter>
 	<servlet-filter-mapping>
 		<servlet-filter-name>OpenGraph Filter</servlet-filter-name>
-		<after-filter>Strip Filter</after-filter>
+		<after-filter>Language Filter</after-filter>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 	</servlet-filter-mapping>
