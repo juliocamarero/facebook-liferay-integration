@@ -68,8 +68,8 @@ public class OpenGraphFilter extends BaseFilter {
 		if (ArrayUtil.isEmpty(_appNamespaces)) {
 			StringBundler sb = new StringBundler(2 + 4 * _appNamespaces.length);
 
-			sb.append(_START_HEAD);
-			sb.append(" og:http://ogp.me/ns fb:http://ogp.me/ns/fb ");
+			sb.append(_START_HTML);
+			sb.append(" xmlns:og=\"http://ogp.me/ns\" xmlns:fb=\"http://ogp.me/ns/fb\"");
 
 			for (String appNamespace : _appNamespaces) {
 				sb.append(appNamespace);
@@ -79,7 +79,7 @@ public class OpenGraphFilter extends BaseFilter {
 			}
 
 			content = StringUtil.replaceFirst(
-				content, _START_HEAD, sb.toString());
+				content, _START_HTML, sb.toString());
 		}
 
 		return content;
@@ -135,7 +135,7 @@ public class OpenGraphFilter extends BaseFilter {
 		}
 	}
 
-	private static final String _START_HEAD = "<head";
+	private static final String _START_HTML = "<html";
 
 	private static Log _log = LogFactoryUtil.getLog(OpenGraphFilter.class);
 

@@ -17,6 +17,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.struts.BaseStrutsAction;
 import com.liferay.portal.kernel.struts.StrutsAction;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -55,14 +56,21 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 			WebKeys.THEME_DISPLAY);
 
 		Map<String, String> opengraphAttributes =
-			(Map<String, String>)request.getAttribute(
-				"LIFERAY_SHARED_OPENGRAPH");
+			(Map<String, String>)request.getAttribute(OPENGRAPH_ATTRIBUTE);
 
 		if (opengraphAttributes == null) {
 			opengraphAttributes = new HashMap<String, String>();
 
-			request.setAttribute(
-				"LIFERAY_SHARED_OPENGRAPH", opengraphAttributes);
+			request.setAttribute(OPENGRAPH_ATTRIBUTE, opengraphAttributes);
+		}
+
+		Map<String, String> twitterAttributes =
+			(Map<String, String>)request.getAttribute(TWITTER_ATTRIBUTE);
+
+		if (twitterAttributes == null) {
+			twitterAttributes = new HashMap<String, String>();
+
+			request.setAttribute(TWITTER_ATTRIBUTE, twitterAttributes);
 		}
 
 		UnicodeProperties layoutTypeSettings = null;
@@ -76,7 +84,6 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 		String ogTitle = layoutTypeSettings.getProperty("og-title");
 		String ogType = layoutTypeSettings.getProperty("og-type");
 		String ogImage = layoutTypeSettings.getProperty("og-image");
-
 		String ogDescription = layoutTypeSettings.getProperty("og-description");
 		String ogVideo = layoutTypeSettings.getProperty("og-video");
 		String ogAudio = layoutTypeSettings.getProperty("og-audio");
@@ -93,14 +100,18 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 
 		opengraphAttributes.put("type", ogType);
 
-		opengraphAttributes.put("url", PortalUtil.getCanonicalURL(
-			PortalUtil.getLayoutFullURL(themeDisplay), themeDisplay, layout));
+		String url = PortalUtil.getCanonicalURL(
+			PortalUtil.getLayoutFullURL(themeDisplay), themeDisplay, layout);
+
+		opengraphAttributes.put("url", url);
+		twitterAttributes.put("url", url);
 
 		if (Validator.isNull(ogTitle)) {
 			ogTitle = layout.getTitle(themeDisplay.getLanguageId());
 		}
 
 		opengraphAttributes.put("title", ogTitle);
+		twitterAttributes.put("title", ogTitle);
 
 		if (Validator.isNull(ogDescription)) {
 			ogDescription = layout.getDescription(themeDisplay.getLanguageId());
@@ -108,6 +119,7 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 
 		if (Validator.isNotNull(ogDescription)) {
 			opengraphAttributes.put("description",ogDescription);
+			twitterAttributes.put("description", ogDescription);
 		}
 
 		if (Validator.isNotNull(ogVideo)) {
@@ -134,7 +146,37 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 
 		if (Validator.isNotNull(ogImage)) {
 			opengraphAttributes.put("image", ogImage);
+			twitterAttributes.put("image", ogImage);
 		}
+		
+		String twCard = layoutTypeSettings.getProperty("twitter-card");
+		String twSite = layoutTypeSettings.getProperty("twitter-site");
+		String twCreator = layoutTypeSettings.getProperty("twitter-creator");
+		
+		if (Validator.isNull(twCard)) {
+			if (Validator.isNotNull(ogImage)) {
+				twCard = "photo";
+			}
+			else {
+				twCard = "summary";
+			}
+		}
+
+		twitterAttributes.put("card", twCard);
+
+
+		if (Validator.isNotNull(twSite)) {
+			twitterAttributes.put("site", StringPool.AT + twSite);
+		}
+
+		if (Validator.isNotNull(twCreator)) {
+			twitterAttributes.put("creator", StringPool.AT + twCreator);
+		}
+		
 	}
+
+	public final static String OPENGRAPH_ATTRIBUTE = "LIFERAY_SHARED_OPENGRAPH";
+	public final static String TWITTER_ATTRIBUTE = "LIFERAY_SHARED_TWITTER";
+
 
 }

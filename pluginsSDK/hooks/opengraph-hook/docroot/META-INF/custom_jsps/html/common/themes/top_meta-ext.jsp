@@ -16,4 +16,16 @@ if (opengraphAttributes != null) {
 <%
 	}
 }
+	
+Map<String, String> twitterAttributes = (Map<String, String>)request.getAttribute("LIFERAY_SHARED_TWITTER");
+
+if (twitterAttributes != null) {
+	for (String key : twitterAttributes.keySet()) {
+%>
+
+<meta content="<%= HtmlUtil.escape(twitterAttributes.get(key)) %>" name="twitter:<%= key %>" />
+
+<%
+	}
+}
 %>
