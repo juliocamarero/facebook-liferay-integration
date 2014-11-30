@@ -57,7 +57,7 @@ String twCreator = layoutTypeSettings.getProperty("twitter-creator");
 	<aui:input helpMessage="og-image-help" label="image-url" name="TypeSettingsProperties--og-image--" type="text" value="<%= ogImage %>" />
 </aui:fieldset>
 
-<h4><liferay-ui:message key="opengraph-metadata" /></h4>
+<h4><liferay-ui:message key="opengraph-metadata" /><liferay-ui:icon-help message="opengraph-is-supported-by-facebook-and-google" /></h4>
 
 <aui:fieldset>
 	<aui:input helpMessage="og-type-help" label="type" name="TypeSettingsProperties--og-type--" type="text" value="<%= ogType %>" />
