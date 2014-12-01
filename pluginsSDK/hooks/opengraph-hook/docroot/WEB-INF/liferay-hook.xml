@@ -26,6 +26,10 @@
 	</servlet-filter-mapping>
 
 	<struts-action>
+		<struts-action-path>/blogs/view_entry</struts-action-path>
+		<struts-action-impl>com.fb.action.EditEntryAction</struts-action-impl>
+	</struts-action>
+	<struts-action>
 		<struts-action-path>/portal/layout</struts-action-path>
 		<struts-action-impl>com.fb.action.OpenGraphLayoutAction</struts-action-impl>
 	</struts-action>
