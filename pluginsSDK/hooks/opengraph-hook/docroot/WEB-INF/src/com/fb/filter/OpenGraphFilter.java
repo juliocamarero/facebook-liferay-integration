@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.HttpUtil;
+import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.liferay.portal.kernel.util.PrefsPropsUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
@@ -65,24 +66,21 @@ public class OpenGraphFilter extends BaseFilter {
 			}
 		}
 
-		if (ArrayUtil.isEmpty(_appNamespaces)) {
-			StringBundler sb = new StringBundler(2 + 4 * _appNamespaces.length);
+		StringBundler sb = new StringBundler(2 + 5 * _appNamespaces.length);
 
-			sb.append(_START_HTML);
-			sb.append(" xmlns:og=\"http://ogp.me/ns\" xmlns:fb=\"http://ogp.me/ns/fb\"");
+		sb.append(_START_HTML);
+		sb.append(" xmlns:og=\"http://ogp.me/ns\" xmlns:fb=\"http://ogp.me/ns/fb\" ");
 
-			for (String appNamespace : _appNamespaces) {
-				sb.append(appNamespace);
-				sb.append(":http://ogp.me/ns/fb/");
-				sb.append(appNamespace);
-				sb.append(StringPool.SPACE);
-			}
-
-			content = StringUtil.replaceFirst(
-				content, _START_HTML, sb.toString());
+		for (String appNamespace : _appNamespaces) {
+			sb.append("xmlns:");
+			sb.append(appNamespace);
+			sb.append("=\"http://ogp.me/ns/fb/");
+			sb.append(appNamespace);
+			sb.append("\" ");
 		}
 
-		return content;
+		return StringUtil.replaceFirst(
+			content, _START_HTML, sb.toString());
 	}
 
 	protected Log getLog() {
@@ -115,9 +113,20 @@ public class OpenGraphFilter extends BaseFilter {
 		BufferCacheServletResponse bufferCacheServletResponse =
 			new BufferCacheServletResponse(response);
 
-		processFilter(
-			OpenGraphFilter.class, request, bufferCacheServletResponse,
-			filterChain);
+		Thread currentThread = Thread.currentThread();
+
+		ClassLoader contextClassLoader = currentThread.getContextClassLoader();
+		currentThread.setContextClassLoader(
+			PortalClassLoaderUtil.getClassLoader());
+
+		try {
+			processFilter(
+				OpenGraphFilter.class, request, bufferCacheServletResponse,
+				filterChain);
+		}
+		finally {
+			currentThread.setContextClassLoader(contextClassLoader);
+		}
 
 		String content = bufferCacheServletResponse.getString();
 

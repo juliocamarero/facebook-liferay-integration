@@ -21,8 +21,9 @@
 	<servlet-filter-mapping>
 		<servlet-filter-name>OpenGraph Filter</servlet-filter-name>
 		<after-filter>Language Filter</after-filter>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/web/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
 	</servlet-filter-mapping>
 
 	<struts-action>
