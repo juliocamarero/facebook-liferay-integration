@@ -7,6 +7,7 @@
 	<language-properties>content/Language.properties</language-properties>
 	<language-properties>content/Language_en.properties</language-properties>
 	<language-properties>content/Language_es.properties</language-properties>
+	<language-properties>content/Language_de.properties</language-properties>
 
 	<custom-jsp-dir>/META-INF/custom_jsps</custom-jsp-dir>
 
