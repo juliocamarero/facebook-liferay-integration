@@ -1,9 +1,0 @@
-/build
-
-# Package Files #
-*.class
-*.jar
-*.war
-*.ear
-.gradle
-/docroot/WEB-INF/classes
