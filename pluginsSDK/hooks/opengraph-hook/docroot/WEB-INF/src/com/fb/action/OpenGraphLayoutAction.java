@@ -144,6 +144,17 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 				WebServerServletTokenUtil.getToken(layout.getIconImageId());
 		}
 
+		if (Validator.isNull(ogImage)) {
+        	if (layout.isIconImage()) {
+				ogImage = themeDisplay.getPathImage() + "/layout_icon?img_id=" +
+					layout.getIconImageId() + "&t=" +
+					WebServerServletTokenUtil.getToken(layout.getIconImageId());
+			}
+			else {
+				ogImage = themeDisplay.getCompanyLogo();
+			}
+        }
+
 		if (Validator.isNotNull(ogImage)) {
 			opengraphAttributes.put("image", ogImage);
 			twitterAttributes.put("image", ogImage);
