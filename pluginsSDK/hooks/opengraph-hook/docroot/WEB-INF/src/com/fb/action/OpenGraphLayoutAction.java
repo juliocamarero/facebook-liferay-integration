@@ -13,12 +13,6 @@
  */
 package com.fb.action;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.struts.BaseStrutsAction;
@@ -32,7 +26,12 @@ import com.liferay.portal.model.Layout;
 import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.webserver.WebServerServletTokenUtil;
-import com.liferay.portlet.journalcontent.util.JournalContentUtil;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Julio Camarero
@@ -98,6 +97,7 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 				ogType = "website";
 			}
 		}
+
 		opengraphAttributes.put("type", ogType);
 
 		String url = PortalUtil.getCanonicalURL(
@@ -137,19 +137,28 @@ public class OpenGraphLayoutAction extends BaseStrutsAction {
 		opengraphAttributes.put("site_name", group.getDescriptiveName());
 
 		opengraphAttributes.put("locale", themeDisplay.getLanguageId());
-	
-        if (Validator.isNull(ogImage)) {
-           ogImage =    themeDisplay.getPathImage() 
-                       + "/company_logo?img_id=" 
-                       + themeDisplay.getCompany().getLogoId() 
-                       + "&t=" 
-                       + WebServerServletTokenUtil.getToken(themeDisplay.getCompany().getLogoId());     
+
+		if (Validator.isNull(ogImage) && layout.isIconImage()) {
+			ogImage = themeDisplay.getPathImage() + "/layout_icon?img_id=" +
+				layout.getIconImageId() + "&t=" +
+				WebServerServletTokenUtil.getToken(layout.getIconImageId());
+		}
+
+		if (Validator.isNull(ogImage)) {
+        	if (layout.isIconImage()) {
+				ogImage = themeDisplay.getPathImage() + "/layout_icon?img_id=" +
+					layout.getIconImageId() + "&t=" +
+					WebServerServletTokenUtil.getToken(layout.getIconImageId());
+			}
+			else {
+				ogImage = themeDisplay.getCompanyLogo();
+			}
         }
 
-        if (Validator.isNotNull(ogImage)) {
-            opengraphAttributes.put("image", ogImage);
-            twitterAttributes.put("image", ogImage);
-        }
+		if (Validator.isNotNull(ogImage)) {
+			opengraphAttributes.put("image", ogImage);
+			twitterAttributes.put("image", ogImage);
+		}
 		
 		String twCard = layoutTypeSettings.getProperty("twitter-card");
 		String twSite = layoutTypeSettings.getProperty("twitter-site");
